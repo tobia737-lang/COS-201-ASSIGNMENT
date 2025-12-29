@@ -6,8 +6,7 @@ class TaxCalculator:
     def compute_tax(self):
         tax = 0
 
-        # SINGLE
-        if self.status == 0:
+       if self.status == 0:
             if self.income <= 10000:
                 tax = self.income * 0.10
             elif self.income <= 30000:
@@ -15,7 +14,6 @@ class TaxCalculator:
             else:
                 tax = 10000 * 0.10 + 20000 * 0.15 + (self.income - 30000) * 0.25
 
-        # MARRIED FILING JOINTLY
         elif self.status == 1:
             if self.income <= 20000:
                 tax = self.income * 0.10
@@ -24,8 +22,7 @@ class TaxCalculator:
             else:
                 tax = 20000 * 0.10 + 30000 * 0.15 + (self.income - 50000) * 0.25
 
-        # MARRIED FILING SEPARATELY
-        elif self.status == 2:
+         elif self.status == 2:
             if self.income <= 12000:
                 tax = self.income * 0.10
             elif self.income <= 35000:
@@ -33,7 +30,6 @@ class TaxCalculator:
             else:
                 tax = 12000 * 0.10 + 23000 * 0.15 + (self.income - 35000) * 0.25
 
-        # HEAD OF HOUSEHOLD
         elif self.status == 3:
             if self.income <= 15000:
                 tax = self.income * 0.10
@@ -47,9 +43,7 @@ class TaxCalculator:
             return 0
 
         return tax
-
-
-# -------- Main Program --------
+        
 status = int(input(
     "Enter filing status:\n"
     "0 = Single\n"
@@ -64,5 +58,6 @@ calculator = TaxCalculator(status, income)
 tax = calculator.compute_tax()
 
 print(f"Total tax is ${tax:.2f}")
+
 
 
